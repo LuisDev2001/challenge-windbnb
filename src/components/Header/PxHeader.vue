@@ -20,5 +20,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import "../../assets/sass/components/Header/_PxHeader.scss";
+@import "~@/assets/sass/components/Header/_PxHeader.scss";
 </style>
