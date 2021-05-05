@@ -8,7 +8,7 @@
         class="search__input"
         placeholder="Add location"
       />
-      <span class="input__search--placeholder">Location</span>
+      <span class="search__input--placeholder">Location</span>
     </label>
     <label class="search__label">
       <input
@@ -18,9 +18,8 @@
         class="search__input"
         placeholder="Add guests"
       />
-      <span class="input__search--placeholder">Guests</span>
+      <span class="search__input--placeholder">Guests</span>
     </label>
-    <span class="search__separator"></span>
     <div class="search__icon">
       <font-awesome-icon icon="search" />
     </div>

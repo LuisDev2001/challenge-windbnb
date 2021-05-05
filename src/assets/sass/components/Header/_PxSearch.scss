@@ -1,2 +1,41 @@
 .search {
+  width: 100%;
+  height: 55px;
+  margin: 37px 0;
+  border-radius: 16px;
+  box-shadow: 0px 1px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  &__input--placeholder {
+    display: none;
+  }
+  &__label,
+  &__input,
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  &__input {
+    border: 0;
+    padding: 16px;
+    margin: 0;
+    width: 100%;
+    font-family: "Mulish-Regular";
+    &:first-child {
+      border-right: 1px solid #f2f2f2;
+    }
+    &::placeholder {
+      font-family: "Mulish-Regular";
+      color: #bdbdbd;
+    }
+  }
+  &__icon {
+    max-width: 53px;
+    width: 100%;
+    border-left: 1px solid #f2f2f2;
+  }
 }

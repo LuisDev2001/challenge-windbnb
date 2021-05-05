@@ -1,0 +1,61 @@
+.card {
+  &__image {
+    width: 100%;
+    margin: 0 0 13px 0;
+    img {
+      display: block;
+      width: 100%;
+      height: 238px;
+      object-fit: cover;
+      border-radius: 24px;
+    }
+  }
+  &__information {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 12px 0;
+  }
+  &__type--host,
+  &__type--private {
+    margin: 0 11px 0 0;
+  }
+  &__type--host {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    height: 28px;
+    border: 1px solid #4f4f4f;
+    border-radius: 12px;
+    font-family: "Montserrat-Bold";
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #4f4f4f;
+  }
+  &__title {
+    font-size: 14px;
+    font-family: "Montserrat-Medium";
+    color: #828282;
+  }
+  &__stars {
+    .fa-star {
+      margin: 0 7.5px 0 0;
+      color: #eb5757;
+      font-size: 15px;
+    }
+    &--points {
+      font-size: 14px;
+      font-family: "Montserrat-Medium";
+      color: #4f4f4f;
+    }
+  }
+  &__descripton {
+    font-family: "Montserrat-SemiBold";
+  }
+}
