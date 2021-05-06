@@ -1,26 +1,23 @@
 <template>
   <article class="card">
     <div class="card__image">
-      <img src="@/assets/img/imagen1.png" alt="Imagen" />
+      <img :src="url" :alt="'Imagen' + id" />
     </div>
     <section class="card__details">
       <section class="card__information">
-        <span class="card__type--host">
+        <span class="card__type--host" v-if="host">
           Super host
         </span>
-        <span class="card__type--private" v-if="false">
-          Private room
+        <span class="card__title">
+          {{ house }}
         </span>
-        <span class="card__title">Entire apartment . 2 beds</span>
       </section>
       <div class="card__stars">
         <font-awesome-icon icon="star" />
-        <span class="card__stars--points">4.40</span>
+        <span class="card__stars--points">{{ starsPoints }}</span>
       </div>
     </section>
-    <div class="card__descripton">
-      Stylist apartment in center of the city
-    </div>
+    <div class="card__descripton">{{ description }}</div>
   </article>
 </template>
 
@@ -34,6 +31,14 @@ export default {
   name: "PxCard",
   components: {
     FontAwesomeIcon,
+  },
+  props: {
+    id: Number,
+    url: String,
+    host: Boolean,
+    house: String,
+    starsPoints: String,
+    description: String,
   },
 };
 </script>

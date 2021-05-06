@@ -37,5 +37,13 @@
     max-width: 53px;
     width: 100%;
     border-left: 1px solid #f2f2f2;
+    color: #eb5757;
+  }
+  @media screen and (min-width: 992px) {
+    width: 35%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+    max-width: 300px;
   }
 }

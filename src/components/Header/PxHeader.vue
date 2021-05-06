@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header wrapper">
     <PxLogo />
     <PxSearch />
   </header>
