@@ -21,7 +21,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1;
     height: 100%;
+  }
+  &__label:first-child {
+    .search__input {
+      border-right: 1px solid #f2f2f2;
+    }
   }
   &__input {
     border: 0;
@@ -29,9 +35,7 @@
     margin: 0;
     width: 100%;
     font-family: "Mulish-Regular";
-    &:first-child {
-      border-right: 1px solid #f2f2f2;
-    }
+
     &::placeholder {
       font-family: "Mulish-Regular";
       color: #bdbdbd;
