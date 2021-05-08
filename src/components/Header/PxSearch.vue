@@ -13,28 +13,18 @@
       </button>
     </div>
     <form class="search__form">
-      <label class="search__label">
-        <input
-          type="text"
-          id="location"
-          name="location"
-          class="search__input"
-          autocomplete="off"
-          placeholder="Add location"
-        />
-        <span class="search__input--placeholder">Location</span>
-      </label>
-      <label class="search__label">
-        <input
-          type="text"
-          id="guests"
-          name="guests"
-          class="search__input"
-          autocomplete="off"
-          placeholder="Add guests"
-        />
-        <span class="search__input--placeholder">Guests</span>
-      </label>
+      <PxInput
+        id="location"
+        name="location"
+        placeholder="Add location"
+        placeholderTextMobile="Location"
+      />
+      <PxInput
+        id="guests"
+        name="guests"
+        placeholder="Add guests"
+        placeholderTextMobile="Guests"
+      />
       <div
         :class="{
           search__button: true,
@@ -60,14 +50,18 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+library.add(faSearch, faTimes);
+
+//Import component custom - LuisDev2001
+import PxInput from "@/components/Input/PxInput";
 
 import { reactive, ref, toRefs } from "vue";
-library.add(faSearch, faTimes);
 
 export default {
   name: "PxSearch",
   components: {
     FontAwesomeIcon,
+    PxInput,
   },
   props: {},
   setup() {
@@ -87,11 +81,17 @@ export default {
       modal.isOpen = false;
     };
 
+    //Event focus input
+    const setFocusInput = () => {
+      console.log("Focus");
+    };
+
     return {
       jsSearch,
       handleOpenModalSearch,
       handleCloseModalSearch,
       ...toRefs(modal),
+      setFocusInput,
     };
   },
 };
