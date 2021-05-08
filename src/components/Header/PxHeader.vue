@@ -2,6 +2,7 @@
   <header class="header wrapper">
     <PxLogo />
     <PxSearch />
+    <div class="overlay" ref="jsOverlay"></div>
   </header>
 </template>
 
