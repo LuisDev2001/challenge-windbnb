@@ -47,6 +47,13 @@
       </div>
     </form>
   </div>
+  <div
+    :class="{
+      overlay: true,
+      'is-active': isOpen,
+    }"
+    ref="jsOverlay"
+  ></div>
 </template>
 
 <script>
