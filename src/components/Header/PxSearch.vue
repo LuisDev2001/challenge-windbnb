@@ -81,17 +81,11 @@ export default {
       modal.isOpen = false;
     };
 
-    //Event focus input
-    const setFocusInput = () => {
-      console.log("Focus");
-    };
-
     return {
       jsSearch,
       handleOpenModalSearch,
       handleCloseModalSearch,
       ...toRefs(modal),
-      setFocusInput,
     };
   },
 };
