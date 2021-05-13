@@ -1,0 +1,28 @@
+.result-location {
+  display: none;
+  max-height: calc(340px - 50px);
+  overflow: hidden auto;
+  &.is-active {
+    display: block;
+  }
+  &__list {
+    padding: 0 30px;
+  }
+  &__item {
+    margin: 0 0 35px 0;
+    font-size: 14px;
+    svg {
+      color: #4f4f4f;
+      font-size: 19px;
+      margin: 0 10px 0 0;
+    }
+  }
+  @media screen and (min-width: 992px) {
+    max-width: 950px;
+    margin: 35px auto 0;
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: 1248px;
+  }
+}

@@ -28,14 +28,23 @@
       <div
         :class="{
           search__button: true,
-          'is-active': isOpen,
         }"
         @click="handleOpenModalSearch()"
       >
         <font-awesome-icon icon="search" />
         <span v-if="isOpen" class="search__button--text">Search</span>
       </div>
+      <div
+        :class="{
+          'search__button search-mode': true,
+        }"
+        @click="handleSearch()"
+      >
+        <font-awesome-icon icon="search" />
+        <span v-if="isOpen" class="search__button--text">Search</span>
+      </div>
     </form>
+    <PxResultLocation :appear="searchMode" :resultList="list" />
   </div>
   <div
     :class="{
@@ -54,6 +63,7 @@ library.add(faSearch, faTimes);
 
 //Import component custom - LuisDev2001
 import PxInput from "@/components/Input/PxInput";
+import PxResultLocation from "@/components/Header/PxResultLocation";
 
 import { reactive, ref, toRefs } from "vue";
 
@@ -62,13 +72,31 @@ export default {
   components: {
     FontAwesomeIcon,
     PxInput,
+    PxResultLocation,
   },
   props: {},
   setup() {
     const jsSearch = ref(null);
 
+    // Boolean variable for appear or dissapear modal search
     const modal = reactive({
       isOpen: false,
+    });
+
+    // Result list array for use reactive variable
+    const resultLocationOptions = reactive({
+      list: [
+        "Helsinki, Finland",
+        "Turku, Finland",
+        "Oulu, Finland",
+        "Vaasa, Finland",
+        "Lurin, Lima",
+        "Pachacamac, Lima",
+        "San Juan de Miraflores, Lima",
+        "Surco, Lima",
+        "San Isidro, Lima",
+      ],
+      searchMode: false,
     });
 
     // Event for appear modal search
@@ -79,13 +107,21 @@ export default {
     // Event for disappear modal search
     const handleCloseModalSearch = () => {
       modal.isOpen = false;
+      resultLocationOptions.searchMode = false;
+    };
+
+    // Event button search
+    const handleSearch = () => {
+      resultLocationOptions.searchMode = true;
     };
 
     return {
       jsSearch,
       handleOpenModalSearch,
       handleCloseModalSearch,
+      handleSearch,
       ...toRefs(modal),
+      ...toRefs(resultLocationOptions),
     };
   },
 };
