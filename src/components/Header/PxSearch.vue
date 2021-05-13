@@ -44,7 +44,9 @@
         <span v-if="isOpen" class="search__button--text">Search</span>
       </div>
     </form>
-    <PxResultLocation :appear="searchMode" :resultList="list" />
+    <section class="search__resutl">
+      <PxResultLocation :appear="searchMode" :resultList="list" />
+    </section>
   </div>
   <div
     :class="{
