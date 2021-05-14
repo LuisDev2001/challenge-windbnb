@@ -18,12 +18,14 @@
         name="location"
         placeholder="Add location"
         placeholderTextMobile="Location"
+        v-model:valueInput="inputLocationValue"
       />
       <PxInput
         id="guests"
         name="guests"
         placeholder="Add guests"
         placeholderTextMobile="Guests"
+        v-model:valueInput="inputGuestValue"
       />
       <div
         :class="{
@@ -45,7 +47,10 @@
       </div>
     </form>
     <section class="search__resutl">
-      <PxResultLocation :appear="searchMode" :resultList="list" />
+      <!-- component result location -->
+      <PxResultLocation :appear="searchMode" :resultList="resultLocation" />
+      <!-- component result guest  -->
+      <PxResutlGuest />
     </section>
   </div>
   <div
@@ -66,6 +71,7 @@ library.add(faSearch, faTimes);
 //Import component custom - LuisDev2001
 import PxInput from "@/components/Input/PxInput";
 import PxResultLocation from "@/components/Header/PxResultLocation";
+import PxResutlGuest from "@/components/Header/PxResutlGuest";
 
 import { reactive, ref, toRefs } from "vue";
 
@@ -75,6 +81,7 @@ export default {
     FontAwesomeIcon,
     PxInput,
     PxResultLocation,
+    PxResutlGuest,
   },
   props: {},
   setup() {
@@ -99,6 +106,9 @@ export default {
         "San Isidro, Lima",
       ],
       searchMode: false,
+      inputLocationValue: "",
+      inputGuestValue: "",
+      resultLocation: [], //This array is for push result and print in the component
     });
 
     // Event for appear modal search

@@ -13,6 +13,8 @@
       @click="handleFocusInput()"
       autocomplete="off"
       ref="jsInput"
+      :value="valueInput"
+      @input="$emit('update:valueInput', $event.target.value)"
       :placeholder="placeholder"
     />
     <span class="search__input--placeholder">{{ placeholderTextMobile }}</span>
@@ -28,6 +30,7 @@ export default {
     name: String,
     placeholder: String,
     placeholderTextMobile: String,
+    valueInput: String,
   },
   setup() {
     const jsInput = ref(null);
