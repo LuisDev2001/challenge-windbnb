@@ -4,6 +4,20 @@
   margin: 0 auto;
 }
 
+//Container results component serach
+.result {
+  max-height: calc(340px - 50px);
+  overflow: hidden auto;
+  @media screen and (min-width: 992px) {
+    max-width: 362px;
+    margin: 35px 0 0;
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    max-width: 472px;
+  }
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;

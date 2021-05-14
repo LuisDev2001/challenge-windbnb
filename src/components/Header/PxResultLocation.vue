@@ -1,6 +1,7 @@
 <template>
   <section
     :class="{
+      result: true,
       'result-location': true,
       'is-active': appear,
     }"
