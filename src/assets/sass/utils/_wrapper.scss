@@ -9,6 +9,11 @@
   width: 100%;
   max-height: calc(340px - 50px);
   overflow: hidden auto;
+  &.is-active {
+    animation-name: fade;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+  }
   @media screen and (min-width: 992px) {
     max-width: 362px;
     margin: 35px 0 0;

@@ -134,6 +134,9 @@ export default {
     // Event for disappear modal search
     const handleCloseModalSearch = () => {
       modal.isOpen = false;
+      resultOptionsAPI.isGuestSelection = false;
+      resultOptionsAPI.openLocationContainer = false;
+      resultOptionsAPI.openGuestContainer = false;
     };
 
     //Event for appear container result location
