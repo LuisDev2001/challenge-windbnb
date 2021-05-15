@@ -43,6 +43,12 @@
   &__modal--title {
     display: none;
   }
+  &__result {
+    display: none;
+    &.is-active {
+      display: flex;
+    }
+  }
   //Search modal mode
   &.is-active {
     background: #ffffff;
@@ -112,11 +118,13 @@
     width: 35%;
     margin: 0;
     &__resutl {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      max-width: 950px;
-      margin: 0 auto;
+      &.is-active {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        max-width: 950px;
+        margin: 0 auto;
+      }
     }
     //Search modal mode
     &.is-active {
@@ -145,7 +153,9 @@
     width: 100%;
     max-width: 300px;
     &__resutl {
-      max-width: 1248px;
+      &.is-active {
+        max-width: 1248px;
+      }
     }
 
     //Search modal mode

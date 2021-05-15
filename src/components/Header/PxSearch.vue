@@ -19,6 +19,7 @@
         placeholder="Add location"
         placeholderTextMobile="Location"
         v-model:valueInput="inputLocationValue"
+        @click="handleOpenResultLocation()"
       />
       <PxInput
         id="guests"
@@ -26,6 +27,7 @@
         placeholder="Add guests"
         placeholderTextMobile="Guests"
         v-model:valueInput="inputGuestValue"
+        @click="handleOpenGuestLocation()"
       />
       <div
         :class="{
@@ -40,17 +42,24 @@
         :class="{
           'search__button search-mode': true,
         }"
-        @click="handleSearch()"
       >
         <font-awesome-icon icon="search" />
         <span v-if="isOpen" class="search__button--text">Search</span>
       </div>
     </form>
-    <section class="search__resutl">
+    <section
+      :class="{
+        search__result: true,
+        'is-active': isOpen,
+      }"
+    >
       <!-- component result location -->
-      <PxResultLocation :appear="searchMode" :resultList="resultLocation" />
+      <PxResultLocation
+        :appear="openLocationContainer"
+        :resultList="resultLocation"
+      />
       <!-- component result guest  -->
-      <PxResutlGuest />
+      <PxResutlGuest :appear="openGuestContainer" />
     </section>
   </div>
   <div
@@ -105,9 +114,10 @@ export default {
         "Surco, Lima",
         "San Isidro, Lima",
       ],
-      searchMode: false,
       inputLocationValue: "",
       inputGuestValue: "",
+      openLocationContainer: false,
+      openGuestContainer: false,
       resultLocation: [], //This array is for push result and print in the component
     });
 
@@ -119,19 +129,26 @@ export default {
     // Event for disappear modal search
     const handleCloseModalSearch = () => {
       modal.isOpen = false;
-      resultLocationOptions.searchMode = false;
     };
 
-    // Event button search
-    const handleSearch = () => {
-      resultLocationOptions.searchMode = true;
+    //Event for appear container result location
+    const handleOpenResultLocation = () => {
+      resultLocationOptions.openLocationContainer = true;
+      resultLocationOptions.openGuestContainer = false;
+    };
+
+    //Event for appear container guest location
+    const handleOpenGuestLocation = () => {
+      resultLocationOptions.openGuestContainer = true;
+      resultLocationOptions.openLocationContainer = false;
     };
 
     return {
       jsSearch,
       handleOpenModalSearch,
       handleCloseModalSearch,
-      handleSearch,
+      handleOpenResultLocation,
+      handleOpenGuestLocation,
       ...toRefs(modal),
       ...toRefs(resultLocationOptions),
     };

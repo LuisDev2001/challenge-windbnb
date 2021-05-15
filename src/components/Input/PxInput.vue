@@ -37,6 +37,7 @@ export default {
 
     const handleFocusInput = () => {
       jsInput.value.focus();
+      console.log(jsInput.value.id);
     };
 
     return {

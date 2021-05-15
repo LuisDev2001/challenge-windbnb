@@ -3,6 +3,7 @@
     :class="{
       result: true,
       'result-guest': true,
+      'is-active': appear,
     }"
   >
     <h2>PxResutlGuest</h2>
@@ -12,6 +13,9 @@
 <script>
 export default {
   name: "PxResutlGuest",
+  props: {
+    appear: Boolean,
+  },
 };
 </script>
 
