@@ -51,6 +51,7 @@
       :class="{
         search__result: true,
         'is-active': isOpen,
+        'is-search-guest': isGuestSelection,
       }"
     >
       <!-- component result location -->
@@ -102,7 +103,7 @@ export default {
     });
 
     // Result list array for use reactive variable
-    const resultLocationOptions = reactive({
+    const resultOptionsAPI = reactive({
       list: [
         "Helsinki, Finland",
         "Turku, Finland",
@@ -118,12 +119,16 @@ export default {
       inputGuestValue: "",
       openLocationContainer: false,
       openGuestContainer: false,
+      isGuestSelection: false,
       resultLocation: [], //This array is for push result and print in the component
     });
 
     // Event for appear modal search
     const handleOpenModalSearch = () => {
       modal.isOpen = true;
+      //Disappear guest & location container, when click in oppen modal of advanced search
+      resultOptionsAPI.openGuestContainer = false;
+      resultOptionsAPI.openLocationContainer = false;
     };
 
     // Event for disappear modal search
@@ -133,14 +138,22 @@ export default {
 
     //Event for appear container result location
     const handleOpenResultLocation = () => {
-      resultLocationOptions.openLocationContainer = true;
-      resultLocationOptions.openGuestContainer = false;
+      //Apear container location result
+      resultOptionsAPI.openLocationContainer = true;
+      //Dessapear container guest result
+      resultOptionsAPI.openGuestContainer = false;
+      //This option put the container in the initial position
+      resultOptionsAPI.isGuestSelection = false;
     };
 
     //Event for appear container guest location
     const handleOpenGuestLocation = () => {
-      resultLocationOptions.openGuestContainer = true;
-      resultLocationOptions.openLocationContainer = false;
+      //Apear container guest result
+      resultOptionsAPI.openGuestContainer = true;
+      //Dessapear container guest result
+      resultOptionsAPI.openLocationContainer = false;
+      //This option put the option in the place
+      resultOptionsAPI.isGuestSelection = true;
     };
 
     return {
@@ -150,7 +163,7 @@ export default {
       handleOpenResultLocation,
       handleOpenGuestLocation,
       ...toRefs(modal),
-      ...toRefs(resultLocationOptions),
+      ...toRefs(resultOptionsAPI),
     };
   },
 };

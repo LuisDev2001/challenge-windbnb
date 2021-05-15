@@ -117,13 +117,20 @@
   @media screen and (min-width: 992px) {
     width: 35%;
     margin: 0;
-    &__resutl {
+    &__result {
       &.is-active {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
         max-width: 950px;
         margin: 0 auto;
+      }
+      //Search guest
+      &.is-search-guest {
+        justify-content: flex-end;
+        .result-guest {
+          margin: 35px 220px 0 0;
+        }
       }
     }
     //Search modal mode
@@ -152,7 +159,7 @@
   @media screen and (min-width: 1200px) {
     width: 100%;
     max-width: 300px;
-    &__resutl {
+    &__result {
       &.is-active {
         max-width: 1248px;
       }

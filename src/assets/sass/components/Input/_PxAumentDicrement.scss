@@ -1,0 +1,38 @@
+.aument-dicrement {
+  &-type {
+    font-size: 14px;
+    margin: 0 0 12px 0;
+    b {
+      margin: 0 0 6px 0;
+      display: inline-block;
+    }
+  }
+  &-actions {
+    button,
+    input {
+      margin: 0;
+      padding: 0;
+    }
+    button {
+      width: 23px;
+      height: 23px;
+      border-radius: 4px;
+      background: #ffffff;
+      border: 1px solid #828282;
+    }
+    input[type="number"] {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      width: 40px;
+      height: 23px;
+      padding: 4px 10px;
+      border: 0;
+      text-align: center;
+      font-size: 14px;
+      font-family: "Mulish-Regular";
+    }
+  }
+}

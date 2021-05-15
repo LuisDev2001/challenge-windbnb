@@ -6,15 +6,22 @@
       'is-active': appear,
     }"
   >
-    <h2>PxResutlGuest</h2>
+    <PxAumentDicrement typePerson="Adult" age="Ages 13 or above" />
+    <PxAumentDicrement typePerson="Children" age="Ages 2-12" />
   </section>
 </template>
 
 <script>
+import { ref } from "vue";
+
+import PxAumentDicrement from "@/components/Input/PxAumentDicrement";
 export default {
   name: "PxResutlGuest",
   props: {
     appear: Boolean,
+  },
+  components: {
+    PxAumentDicrement,
   },
 };
 </script>

@@ -1,6 +1,10 @@
 .result-guest {
   display: none;
+  padding: 0 30px;
   &.is-active {
     display: block;
+  }
+  .aument-dicrement:first-child {
+    margin: 0 0 52px 0;
   }
 }

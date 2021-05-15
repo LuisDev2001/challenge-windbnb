@@ -6,6 +6,7 @@
 
 //Container results component serach
 .result {
+  width: 100%;
   max-height: calc(340px - 50px);
   overflow: hidden auto;
   @media screen and (min-width: 992px) {
