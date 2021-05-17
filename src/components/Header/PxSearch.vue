@@ -154,28 +154,32 @@ export default {
 
     //Event for appear container result location
     const handleOpenResultLocation = () => {
-      //Apear container location result
-      resultSearchState.openLocationContainer = true;
-      //Dessapear container guest result
-      resultSearchState.openGuestContainer = false;
-      //This option put the container in the initial position
-      resultSearchState.isGuestSelection = false;
+      if (modalState.isOpen) {
+        //Apear container location result
+        resultSearchState.openLocationContainer = true;
+        //Dessapear container guest result
+        resultSearchState.openGuestContainer = false;
+        //This option put the container in the initial position
+        resultSearchState.isGuestSelection = false;
+      }
     };
 
     //Event for appear container guest location
     const handleOpenGuestLocation = () => {
-      //Apear container guest result
-      resultSearchState.openGuestContainer = true;
-      //Dessapear container guest result
-      resultSearchState.openLocationContainer = false;
-      //This option put the option in the place
-      resultSearchState.isGuestSelection = true;
+      if (modalState.isOpen) {
+        //Apear container guest result
+        resultSearchState.openGuestContainer = true;
+        //Dessapear container guest result
+        resultSearchState.openLocationContainer = false;
+        //This option put the option in the place
+        resultSearchState.isGuestSelection = true;
+      }
     };
 
     //Event for appear tooltip
     const handleOpenTooltip = (event) => {
       tooltipState.appearTooltip = !tooltipState.appearTooltip;
-      tooltipState.positionTopTooltip = event.target.offsetTop;
+      tooltipState.positionTopTooltip = event.target.offsetTop + 15;
       tooltipState.positionLeftTooltip = event.target.offsetLeft - 120;
     };
 

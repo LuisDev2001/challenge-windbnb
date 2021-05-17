@@ -29,6 +29,7 @@
     border-left: 1px solid #f2f2f2;
     color: #eb5757;
     cursor: pointer;
+    transition: 0.4s ease all;
     &--text {
       font-family: "Mulish-Bold";
       font-size: 14px;
@@ -111,6 +112,15 @@
         background: rgba(235, 87, 87, 0.9);
         color: #f2f2f2;
         border-radius: 16px;
+        border: 1px solid transparent;
+        &:hover {
+          background: #ffffff;
+          color: rgba(235, 87, 87, 0.9);
+          border: 1px solid rgba(235, 87, 87, 0.9);
+          .search__button--text {
+            color: rgba(235, 87, 87, 0.9);
+          }
+        }
       }
     }
   }
@@ -141,6 +151,9 @@
         max-width: 950px;
         width: 100%;
         margin: 0 auto 56px;
+        h4 {
+          font-size: 20px;
+        }
       }
       .search__form {
         flex-direction: row;
@@ -157,8 +170,7 @@
     }
   }
   @media screen and (min-width: 1200px) {
-    width: 100%;
-    max-width: 300px;
+    width: 45%;
     &__result {
       &.is-active {
         max-width: 1248px;

@@ -44,6 +44,7 @@ export default {
   justify-content: center;
   position: absolute;
   display: none;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.3);
   p {
     font-size: 14px;
     font-family: "Montserrat-Bold";
@@ -54,19 +55,19 @@ export default {
     animation-duration: 0.5s;
   }
   &.info {
-    background: rgba(98, 134, 233, 0.3);
+    background: rgb(195, 208, 243);
     p {
       color: rgba(12, 58, 184, 0.8);
     }
   }
   &.warn {
-    background: rgba(237, 248, 77, 0.3);
+    background: rgb(236, 241, 152);
     p {
       color: rgba(197, 209, 29, 0.3);
     }
   }
   &.error {
-    background: rgba(248, 77, 77, 0.8);
+    background: rgb(247, 142, 142);
     p {
       color: rgba(219, 35, 35, 0.8);
     }
