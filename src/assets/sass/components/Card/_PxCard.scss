@@ -60,4 +60,9 @@
   &__descripton {
     font-family: "Montserrat-SemiBold";
   }
+  @media screen and (min-width: 992px) {
+    &__type--host {
+      white-space: nowrap;
+    }
+  }
 }

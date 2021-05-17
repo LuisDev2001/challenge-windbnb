@@ -34,9 +34,17 @@
           search__button: true,
         }"
         @click="handleOpenModalSearch()"
+        @mouseenter="handleOpenTooltip($event)"
       >
-        <font-awesome-icon icon="search" />
+        <font-awesome-icon icon="cogs" />
         <span v-if="isOpen" class="search__button--text">Search</span>
+        <PxTooltip
+          msgTooltip="Custom search"
+          :info="true"
+          :appear="false"
+          :top="10"
+          :left="20"
+        />
       </div>
       <div
         :class="{
@@ -74,14 +82,15 @@
 
 <script>
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimes, faCogs } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-library.add(faSearch, faTimes);
+library.add(faSearch, faTimes, faCogs);
 
 //Import component custom - LuisDev2001
 import PxInput from "@/components/Input/PxInput";
 import PxResultLocation from "@/components/Header/PxResultLocation";
 import PxResutlGuest from "@/components/Header/PxResutlGuest";
+import PxTooltip from "@/components/TooltipUX/PxTooltip";
 
 import { computed, reactive, ref, toRefs } from "vue";
 
@@ -92,18 +101,19 @@ export default {
     PxInput,
     PxResultLocation,
     PxResutlGuest,
+    PxTooltip,
   },
   props: {},
   setup() {
     const jsSearch = ref(null);
 
     // Boolean variable for appear or dissapear modal search
-    const modal = reactive({
+    const modalState = reactive({
       isOpen: false,
     });
 
-    // Result list array for use reactive variable
-    const resultOptionsAPI = reactive({
+    // Use reactive variables for Composition API
+    const resultSearchState = reactive({
       list: [
         "Helsinki, Finland",
         "Turku, Finland",
@@ -120,45 +130,53 @@ export default {
 
     // Event for appear modal search
     const handleOpenModalSearch = () => {
-      modal.isOpen = true;
+      modalState.isOpen = true;
       //Disappear guest & location container, when click in oppen modal of advanced search
-      resultOptionsAPI.openGuestContainer = false;
-      resultOptionsAPI.openLocationContainer = false;
+      resultSearchState.openGuestContainer = false;
+      resultSearchState.openLocationContainer = false;
     };
 
     // Event for disappear modal search
     const handleCloseModalSearch = () => {
-      modal.isOpen = false;
-      resultOptionsAPI.isGuestSelection = false;
-      resultOptionsAPI.openLocationContainer = false;
-      resultOptionsAPI.openGuestContainer = false;
+      modalState.isOpen = false;
+      resultSearchState.isGuestSelection = false;
+      resultSearchState.openLocationContainer = false;
+      resultSearchState.openGuestContainer = false;
     };
 
     //Event for appear container result location
     const handleOpenResultLocation = () => {
       //Apear container location result
-      resultOptionsAPI.openLocationContainer = true;
+      resultSearchState.openLocationContainer = true;
       //Dessapear container guest result
-      resultOptionsAPI.openGuestContainer = false;
+      resultSearchState.openGuestContainer = false;
       //This option put the container in the initial position
-      resultOptionsAPI.isGuestSelection = false;
+      resultSearchState.isGuestSelection = false;
     };
 
     //Event for appear container guest location
     const handleOpenGuestLocation = () => {
       //Apear container guest result
-      resultOptionsAPI.openGuestContainer = true;
+      resultSearchState.openGuestContainer = true;
       //Dessapear container guest result
-      resultOptionsAPI.openLocationContainer = false;
+      resultSearchState.openLocationContainer = false;
       //This option put the option in the place
-      resultOptionsAPI.isGuestSelection = true;
+      resultSearchState.isGuestSelection = true;
     };
 
+    //Event for appear tooltip
+    const handleOpenTooltip = (event) => {
+      console.log(event);
+      console.log(event.y);
+      console.log(event.x);
+    };
+
+    // Functionality filter list location
     const resultFilterLocation = computed(() => {
-      return resultOptionsAPI.list.filter((result) => {
+      return resultSearchState.list.filter((result) => {
         return result
           .toLowerCase()
-          .includes(resultOptionsAPI.inputLocationValue.toLowerCase());
+          .includes(resultSearchState.inputLocationValue.toLowerCase());
       });
     });
 
@@ -168,9 +186,10 @@ export default {
       handleCloseModalSearch,
       handleOpenResultLocation,
       handleOpenGuestLocation,
+      handleOpenTooltip,
       resultFilterLocation,
-      ...toRefs(modal),
-      ...toRefs(resultOptionsAPI),
+      ...toRefs(modalState),
+      ...toRefs(resultSearchState),
     };
   },
 };
