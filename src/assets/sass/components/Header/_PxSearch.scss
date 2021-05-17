@@ -163,6 +163,12 @@
       &.is-active {
         max-width: 1248px;
       }
+      //Search guest
+      &.is-search-guest {
+        .result-guest {
+          margin: 35px 270px 0 0;
+        }
+      }
     }
 
     //Search modal mode

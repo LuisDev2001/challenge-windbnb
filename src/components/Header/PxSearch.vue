@@ -57,7 +57,7 @@
       <!-- component result location -->
       <PxResultLocation
         :appear="openLocationContainer"
-        :resultList="resultLocation"
+        :resultList="resultFilterLocation"
       />
       <!-- component result guest  -->
       <PxResutlGuest :appear="openGuestContainer" />
@@ -83,7 +83,7 @@ import PxInput from "@/components/Input/PxInput";
 import PxResultLocation from "@/components/Header/PxResultLocation";
 import PxResutlGuest from "@/components/Header/PxResutlGuest";
 
-import { reactive, ref, toRefs } from "vue";
+import { computed, reactive, ref, toRefs } from "vue";
 
 export default {
   name: "PxSearch",
@@ -109,11 +109,6 @@ export default {
         "Turku, Finland",
         "Oulu, Finland",
         "Vaasa, Finland",
-        "Lurin, Lima",
-        "Pachacamac, Lima",
-        "San Juan de Miraflores, Lima",
-        "Surco, Lima",
-        "San Isidro, Lima",
       ],
       inputLocationValue: "",
       inputGuestValue: "",
@@ -159,12 +154,21 @@ export default {
       resultOptionsAPI.isGuestSelection = true;
     };
 
+    const resultFilterLocation = computed(() => {
+      return resultOptionsAPI.list.filter((result) => {
+        return result
+          .toLowerCase()
+          .includes(resultOptionsAPI.inputLocationValue.toLowerCase());
+      });
+    });
+
     return {
       jsSearch,
       handleOpenModalSearch,
       handleCloseModalSearch,
       handleOpenResultLocation,
       handleOpenGuestLocation,
+      resultFilterLocation,
       ...toRefs(modal),
       ...toRefs(resultOptionsAPI),
     };

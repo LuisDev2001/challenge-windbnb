@@ -1,8 +1,7 @@
 <template>
   <section
     :class="{
-      result: true,
-      'result-guest': true,
+      'result result-guest': true,
       'is-active': appear,
     }"
   >
@@ -12,8 +11,6 @@
 </template>
 
 <script>
-import { ref } from "vue";
-
 import PxAumentDicrement from "@/components/Input/PxAumentDicrement";
 export default {
   name: "PxResutlGuest",
