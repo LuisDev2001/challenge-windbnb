@@ -35,15 +35,16 @@
         }"
         @click="handleOpenModalSearch()"
         @mouseenter="handleOpenTooltip($event)"
+        @mouseleave="handleOpenTooltip($event)"
       >
         <font-awesome-icon icon="cogs" />
         <span v-if="isOpen" class="search__button--text">Search</span>
         <PxTooltip
           msgTooltip="Custom search"
           :info="true"
-          :appear="false"
-          :top="10"
-          :left="20"
+          :appear="appearTooltip"
+          :top="positionTopTooltip"
+          :left="positionLeftTooltip"
         />
       </div>
       <div
@@ -128,6 +129,13 @@ export default {
       resultLocation: [], //This array is for push result and print in the component
     });
 
+    // State for set position and active of tooltip
+    const tooltipState = reactive({
+      appearTooltip: false,
+      positionTopTooltip: 0,
+      positionLeftTooltip: 0,
+    });
+
     // Event for appear modal search
     const handleOpenModalSearch = () => {
       modalState.isOpen = true;
@@ -166,9 +174,9 @@ export default {
 
     //Event for appear tooltip
     const handleOpenTooltip = (event) => {
-      console.log(event);
-      console.log(event.y);
-      console.log(event.x);
+      tooltipState.appearTooltip = !tooltipState.appearTooltip;
+      tooltipState.positionTopTooltip = event.target.offsetTop;
+      tooltipState.positionLeftTooltip = event.target.offsetLeft - 120;
     };
 
     // Functionality filter list location
@@ -190,6 +198,7 @@ export default {
       resultFilterLocation,
       ...toRefs(modalState),
       ...toRefs(resultSearchState),
+      ...toRefs(tooltipState),
     };
   },
 };

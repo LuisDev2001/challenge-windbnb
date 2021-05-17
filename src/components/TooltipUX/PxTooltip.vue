@@ -43,6 +43,16 @@ export default {
   align-items: center;
   justify-content: center;
   position: absolute;
+  display: none;
+  p {
+    font-size: 14px;
+    font-family: "Montserrat-Bold";
+  }
+  &.is-active {
+    display: inline-flex;
+    animation-name: fade;
+    animation-duration: 0.5s;
+  }
   &.info {
     background: rgba(98, 134, 233, 0.3);
     p {
