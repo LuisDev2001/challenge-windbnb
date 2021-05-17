@@ -15,6 +15,7 @@
         :house="infoHome.houseInfo"
         :starsPoints="infoHome.starsPoints"
         :description="infoHome.description"
+        :alt="`Imagen ${infoHome.id}`"
       />
     </section>
 

@@ -1,7 +1,7 @@
 <template>
   <article class="card">
     <div class="card__image">
-      <img :src="url" :alt="'Imagen' + id" />
+      <img :src="url" :alt="alt" />
     </div>
     <section class="card__details">
       <section class="card__information">
@@ -33,7 +33,7 @@ export default {
     FontAwesomeIcon,
   },
   props: {
-    id: Number,
+    alt: String,
     url: String,
     host: Boolean,
     house: String,
